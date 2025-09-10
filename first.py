@@ -1,4 +1,5 @@
 from datasets import load_dataset
+from transformers import GPT2Tokenizer
 
 load_data = load_dataset("text", data_files="./tinyshakespeare.txt")
 print("dataset created successfully")
@@ -15,3 +16,7 @@ dataset = {
 }
 
 print(dataset)
+
+tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+print("tokenizer made")
+print(tokenizer)
