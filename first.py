@@ -22,6 +22,7 @@ dataset = {
 print(dataset)
 print(f"training dataset is {dataset['train']}")
 
+# import and create tokenizer
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 tokenizer.pad_token = tokenizer.eos_token  # required for gpt-2
 print("tokenizer made")
@@ -34,8 +35,13 @@ def tokenize_func(data):
 
 
 # take datasets and process in batches, call tokenize_func each batch, return new dataset
+# pre-tokenizing each dataset for speed and memory efficiency
+# for larger datasets that didn't fit into memory we'd tokenize on the fly
 tokenized_train = dataset["train"].map(tokenize_func, batched=True)
 tokenized_val = dataset["validation"].map(tokenize_func, batched=True)
 tokenized_test = dataset["test"].map(tokenize_func, batched=True)
 
-print(tokenized_train)
+# features has text, input_ids and attention_mask now
+print(f"tokenized train={tokenized_train}")
+print(f"tokenized val={tokenized_val}")
+print(f"tokenized test={tokenized_test}")
