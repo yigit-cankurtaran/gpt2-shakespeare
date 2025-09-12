@@ -1,5 +1,5 @@
 from datasets import load_dataset
-from transformers import GPT2Tokenizer
+from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 load_data = load_dataset("text", data_files="./tinyshakespeare.txt")
 print("dataset created successfully")
@@ -45,3 +45,6 @@ tokenized_test = dataset["test"].map(tokenize_func, batched=True)
 print(f"tokenized train={tokenized_train}")
 print(f"tokenized val={tokenized_val}")
 print(f"tokenized test={tokenized_test}")
+
+model = GPT2LMHeadModel.from_pretrained("gpt2")
+print(f"model is {model}")
