@@ -1,5 +1,5 @@
 from datasets import load_dataset
-from transformers import GPT2Tokenizer, GPT2LMHeadModel
+from transformers import GPT2Tokenizer, GPT2LMHeadModel, DataCollatorForLanguageModeling
 
 load_data = load_dataset("text", data_files="./tinyshakespeare.txt")
 print("dataset created successfully")
@@ -48,3 +48,9 @@ print(f"tokenized test={tokenized_test}")
 
 model = GPT2LMHeadModel.from_pretrained("gpt2")
 print(f"model is {model}")
+
+# will use collator for language modeling bc we're working with LLM
+collator = DataCollatorForLanguageModeling(
+    tokenizer=tokenize_func,
+    mlm=False,  # for causal language modeling like GPT
+)
