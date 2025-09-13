@@ -81,3 +81,5 @@ trainer = Trainer(
     train_dataset=tokenized_train,
     eval_dataset=tokenized_val,
 )
+
+trainer.train()
