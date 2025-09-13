@@ -57,7 +57,7 @@ print(f"model is {model}")
 
 # will use collator for language modeling bc we're working with LLM
 collator = DataCollatorForLanguageModeling(
-    tokenizer=tokenize_func,
+    tokenizer=tokenizer,
     mlm=False,  # for causal language modeling like GPT
 )
 
