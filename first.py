@@ -72,6 +72,7 @@ train_params = TrainingArguments(
     per_device_train_batch_size=2,  # low ram on my hardware
     eval_strategy="epoch",  # we can do steps if training takes longer, epoch cleaner rn
     warmup_steps=500,  # hit target lr this many steps after start
+    save_only_model=True,
 )
 
 trainer = Trainer(
