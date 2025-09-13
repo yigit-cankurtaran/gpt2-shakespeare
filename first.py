@@ -70,7 +70,6 @@ train_params = TrainingArguments(
     num_train_epochs=3,  # low for fine tuning
     learning_rate=5e-5,  # IMPORTANT!! for fine tuning
     per_device_train_batch_size=2,  # low ram on my hardware
-    use_mps_device=True,  # macbook
     eval_strategy="epoch",  # we can do steps if training takes longer, epoch cleaner rn
     warmup_steps=500,  # hit target lr this many steps after start
 )
