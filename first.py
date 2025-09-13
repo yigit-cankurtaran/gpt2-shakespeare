@@ -74,3 +74,11 @@ train_params = TrainingArguments(
     eval_strategy="epoch",  # we can do steps if training takes longer, epoch cleaner rn
     warmup_steps=500,  # hit target lr this many steps after start
 )
+
+trainer = Trainer(
+    model,
+    args=train_params,
+    data_collator=collator,
+    train_dataset=tokenized_train,
+    eval_dataset=tokenized_val,
+)
